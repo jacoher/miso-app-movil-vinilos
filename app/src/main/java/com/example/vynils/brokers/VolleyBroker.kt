@@ -1,4 +1,4 @@
-package com.example.vynils.services
+package com.example.vynils.brokers
 
 import android.content.Context
 import com.android.volley.Request
@@ -15,22 +15,20 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
-class WebService constructor(context: Context) {
+class VolleyBroker constructor(context: Context) {
     companion object{
         const val BASE_URL= "https://vynils-back-miso.herokuapp.com/"
-        var instance: WebService? = null
+        var instance: VolleyBroker? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
-                instance ?: WebService(context).also {
+                instance ?: VolleyBroker(context).also {
                     instance = it
                 }
             }
     }
-
     private val requestQueue: RequestQueue by lazy {
         Volley.newRequestQueue(context.applicationContext)
     }
-
     suspend fun getAlbums() = suspendCoroutine<List<Album>>{ cont->
         requestQueue.add(getRequest("albums",
             Response.Listener<String> { response ->
@@ -100,4 +98,5 @@ class WebService constructor(context: Context) {
     ): StringRequest {
         return StringRequest(Request.Method.GET, BASE_URL + path, responseListener, errorListener)
     }
+
 }

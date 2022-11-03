@@ -12,5 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="titleTextColor">@color/aguamarina</item>
+        <item name="titleTextColor">@color/orange</item>
     </style>
 </resources>
