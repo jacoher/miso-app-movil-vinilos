@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">API_Libs</string>
+    <string name="app_name">Vynils</string>
+    <string name="default_text">Bienvenido a Vynils App</string>
+    <string name="title_album">Albumes</string>
+    <string name="title_collectors">Coleccionistas</string>
+    <string name="title_artists">Artistas</string>
 </resources>

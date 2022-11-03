@@ -1,4 +1,4 @@
-package com.example.api_libs
+package com.example.vynils
 
 import org.junit.Test
 
