@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="album" type="com.example.vynils.model.Album" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        tools:context=".ui.createAlbum.CreateAlbum">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:baselineAligned="false">
+
+                <EditText
+                    android:id="@+id/editTextAlbumName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/rectangle_light_orange"
+                    android:ems="10"
+                    android:hint="@string/activity_create_album_nombre"
+                    android:inputType="textPersonName"
+                    android:padding="15dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
+
+                <EditText
+                    android:id="@+id/editTextAlbumPortada"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginVertical="5dp"
+                    android:background="@drawable/rectangle_light_orange"
+                    android:ems="10"
+                    android:hint="@string/activity_create_album_portada"
+                    android:inputType="textPersonName"
+                    android:padding="15dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
+
+                <EditText
+                    android:id="@+id/editTextAlbumDescripcion"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginVertical="5dp"
+                    android:background="@drawable/rectangle_light_orange"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:hint="@string/activity_create_album_descripcion"
+                    android:inputType="textMultiLine"
+                    android:padding="15dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
+
+                <EditText
+                    android:id="@+id/editTextAlbumFecha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginVertical="5dp"
+                    android:background="@drawable/rectangle_light_orange"
+                    android:ems="10"
+                    android:hint="@string/activity_create_album_fecha"
+                    android:inputType="date"
+                    android:padding="15dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
+
+                <Spinner
+                    android:id="@+id/spinnerAlbumGenero"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginVertical="5dp"
+                    android:background="@drawable/rectangle_light_orange"
+                    android:drawableEnd="@drawable/ic_arrow_down"
+                    android:ems="10"
+                    android:padding="15dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/orange" />
+
+                <Spinner
+                    android:id="@+id/spinnerAlbumDisquera"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginVertical="5dp"
+                    android:background="@drawable/rectangle_light_orange"
+                    android:drawableEnd="@drawable/ic_arrow_down"
+                    android:padding="15dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/orange" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="5dp"
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
+
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="7dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/light_orange"
+                        android:onClick="cancelCreation"
+                        android:padding="15dp"
+                        android:text="@string/activity_create_album_cancel"
+                        android:textColor="@color/white" />
+
+                    <Button
+                        android:id="@+id/button2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/neptune_green"
+                        android:onClick="createAlbum"
+                        android:padding="15dp"
+                        android:text="@string/activity_create_album_create"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

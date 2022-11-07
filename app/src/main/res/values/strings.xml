@@ -4,4 +4,12 @@
     <string name="title_album">Albumes</string>
     <string name="title_collectors">Coleccionistas</string>
     <string name="title_artists">Artistas</string>
+
+    <string name="activity_create_album_tittle">Crear album</string>
+    <string name="activity_create_album_nombre">Nombre</string>
+    <string name="activity_create_album_portada">Ingrese URL de la portada</string>
+    <string name="activity_create_album_descripcion">Descripción</string>
+    <string name="activity_create_album_fecha">Fecha de lanzamiento</string>
+    <string name="activity_create_album_create">Crear</string>
+    <string name="activity_create_album_cancel">Cancelar</string>
 </resources>

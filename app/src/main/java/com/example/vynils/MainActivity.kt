@@ -26,5 +26,12 @@ class MainActivity : AppCompatActivity() {
             R.id.navigation_home, R.id.navigation_collectors, R.id.navigation_performers))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        binding
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }
