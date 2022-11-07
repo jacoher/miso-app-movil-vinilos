@@ -21,4 +21,21 @@ class CacheManager (context: Context) {
         return if (albums.containsKey("albumes")) albums["albumes"]!! else listOf<Album>()
     }
 
+    fun addAlbums( album: List<Album>) {
+        albums["albumes"] = album
+    }
+
+    fun addAlbum(album: Album){
+        if(albums.containsKey("albumes")){
+            val albumes = albums["albumes"]!!.toMutableList()
+            for(i in 0 until albumes.size){
+                if(albumes[i].id == album.id){
+                    albumes[i] = album
+                    albums["albumes"] = albumes
+                    break
+                }
+            }
+        }
+    }
+
 }

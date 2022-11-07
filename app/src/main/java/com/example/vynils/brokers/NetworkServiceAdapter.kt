@@ -1,9 +1,13 @@
 package com.example.vynils.brokers
 
 import android.content.Context
+import android.util.ArrayMap
+import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
+import com.android.volley.VolleyError
+import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vynils.model.Album
@@ -11,17 +15,18 @@ import com.example.vynils.model.Performer
 import com.example.vynils.model.PerformerType
 import com.example.vynils.model.Track
 import org.json.JSONArray
+import org.json.JSONObject
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
-class VolleyBroker constructor(context: Context) {
+class NetworkServiceAdapter constructor(context: Context) {
     companion object{
         const val BASE_URL= "https://vynils-back-miso.herokuapp.com/"
-        var instance: VolleyBroker? = null
+        var instance: NetworkServiceAdapter? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
-                instance ?: VolleyBroker(context).also {
+                instance ?: NetworkServiceAdapter(context).also {
                     instance = it
                 }
             }
@@ -90,6 +95,45 @@ class VolleyBroker constructor(context: Context) {
                 cont.resumeWithException(it)
             }))
     }
+
+    suspend fun postAlbum(album: Album){
+        val url = BASE_URL + "albums"
+
+        val jsonObjectAlbum = JSONObject()
+        jsonObjectAlbum.put("name",album.name)
+        jsonObjectAlbum.put("cover",album.cover)
+        jsonObjectAlbum.put("releaseDate",album.releaseDate)
+        jsonObjectAlbum.put("description",album.description)
+        jsonObjectAlbum.put("genre",album.genre)
+        jsonObjectAlbum.put("recordLabel",album.recordLabel)
+
+        requestQueue.add(object : JsonObjectRequest(
+            Method.POST, url, jsonObjectAlbum,
+            object : Response.Listener<JSONObject?> {
+                override fun onResponse(response: JSONObject?) {
+                    Log.i("StartActivity", response.toString())
+                }
+            }, object : Response.ErrorListener {
+                override fun onErrorResponse(error: VolleyError) {
+                    Log.i("StartActivity", error.toString())
+                }
+            }) {
+
+            override fun getHeaders(): Map<String, String> {
+                Log.d("parametros post",body.toString())
+                val headers = ArrayMap<String, String>()
+                headers["Content-Type"] = "application/json"
+                return headers
+            }
+
+//            override fun getParams(): Map<String, String> {
+//                val params: MutableMap<String, String> = ArrayMap()
+//                return params
+//            }
+        })
+    }
+
+
 
     private fun getRequest(
         path: String,

@@ -1,14 +1,19 @@
 package com.example.vynils.view.album.album_adapter
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vynils.R
 import com.example.vynils.databinding.AlbumRowBinding
 import com.example.vynils.model.Album
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.squareup.picasso.Picasso
 
 class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>(){
@@ -51,6 +56,7 @@ class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>(){
             }
             performer.setText(performersString)
             holder.viewDataBinding.root.setOnClickListener{
+
             }
         }
 

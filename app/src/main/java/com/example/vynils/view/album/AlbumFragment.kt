@@ -1,5 +1,6 @@
 package com.example.vynils.view.album
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,10 +11,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.vynils.R
 import com.example.vynils.databinding.FragmentAlbumListBinding
 import com.example.vynils.model.Album
 import com.example.vynils.view.album.album_adapter.AlbumAdapter
+import com.example.vynils.view.createAlbum.CreateAlbum
 import com.example.vynils.viewmodel.AlbumViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class AlbumFragment : Fragment() {
     private var _binding: FragmentAlbumListBinding? = null
@@ -37,6 +41,12 @@ class AlbumFragment : Fragment() {
         recyclerView = binding.albumsRv
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
+
+        val getButton: FloatingActionButton = view.findViewById(R.id.fab);
+        getButton.setOnClickListener {
+            val intent = Intent (activity, CreateAlbum::class.java)
+            activity?.startActivity(intent)
+        }
 
     }
 
