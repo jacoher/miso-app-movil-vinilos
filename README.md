@@ -32,10 +32,8 @@ Vinilos es una aplicación móvil que permite ofrecer a los coleccionistas y per
 
 **APK para instalar en dispositivo físico**
 
-El APK se encuentra en el directorio <<apk>> raíz.
+El APK se encuentra en el directorio /apk de raíz del proyecto.
 
-Ahora que tiene un archivo .apk, debe instalarlo en su dispositivo Android.
-Hay dos formas principales:
+Ahora que tiene un archivo vynils.apk, debe instalarlo en su dispositivo Android.
 
-
-Si <<app>> está configurado correctamente, la aplicación ahora debería aparecer en su lista de aplicaciones instaladas. Para enviar un .apk actualizado, debe desinstalarlo antes de ejecutar.
+Si  está configurado correctamente, la aplicación ahora debería aparecer en su lista de aplicaciones instaladas. Para enviar un .apk actualizado, debe desinstalarlo antes de ejecutar.
