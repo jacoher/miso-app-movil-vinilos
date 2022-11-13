@@ -133,6 +133,7 @@ class NetworkServiceAdapter constructor(context: Context) {
         })
     }
 
+
     suspend fun getMusicians() = suspendCoroutine<List<Performer>>{ cont->
         requestQueue.add(getRequest("musicians",
             Response.Listener<String> { response ->
@@ -188,6 +189,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                 cont.resumeWithException(it)
             }))
     }
+
 
     private fun getRequest(
         path: String,
