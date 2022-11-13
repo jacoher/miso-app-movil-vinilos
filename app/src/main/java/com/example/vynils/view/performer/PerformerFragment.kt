@@ -1,5 +1,6 @@
-package com.example.vynils.view.album
+package com.example.vynils.view.performer
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,32 +11,39 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.vynils.databinding.FragmentAlbumListBinding
-import com.example.vynils.model.Album
-import com.example.vynils.view.album.album_adapter.AlbumAdapter
-import com.example.vynils.viewmodel.AlbumViewModel
+import com.example.vynils.databinding.FragmentPerformerListBinding
+import com.example.vynils.model.Performer
+import com.example.vynils.viewmodel.PerformerViewModel
 
-class AlbumFragment : Fragment() {
-    private var _binding: FragmentAlbumListBinding? = null
+class PerformerFragment : Fragment() {
+
+    private var _binding: FragmentPerformerListBinding? = null
     private val binding get() = _binding!!
     private lateinit var recyclerView: RecyclerView
-    private lateinit var viewModel: AlbumViewModel
-    private var viewModelAdapter: AlbumAdapter? = null
+    private lateinit var viewModel: PerformerViewModel
+    private var viewModelAdapter: PerformerAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentAlbumListBinding.inflate(inflater, container, false)
-        val view = binding.root
-        viewModelAdapter = AlbumAdapter()
+        _binding = FragmentPerformerListBinding.inflate(inflater, container, false)
+        val view: View = binding.root
+        viewModelAdapter = PerformerAdapter()
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        recyclerView = binding.albumsRv
+        recyclerView = binding.performersRv
         recyclerView.layoutManager = LinearLayoutManager(context)
+
+        viewModelAdapter?.setOnItemClickListener(object: PerformerAdapter.OnItemClickListener{
+            override fun onItemClick(position: Int) {
+                var performer  = viewModel.performers.value?.get(position)
+            }
+        })
+
         recyclerView.adapter = viewModelAdapter
 
     }
@@ -43,17 +51,16 @@ class AlbumFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val activity = requireNotNull(this.activity) {
-            "You can only access the viewModel after onActivityCreated()"
         }
 
         viewModel = ViewModelProvider(
             this,
-            AlbumViewModel.Factory(activity.application)
-        ).get(AlbumViewModel::class.java)
+            PerformerViewModel.Factory(activity.application)
+        ).get(PerformerViewModel::class.java)
 
-        viewModel.albums.observe(viewLifecycleOwner, Observer<List<Album>> {
+        viewModel.performers.observe(viewLifecycleOwner, Observer<List<Performer>> {
             it.apply {
-                viewModelAdapter!!.albums = this
+                viewModelAdapter!!.performers = this
             }
         })
 
@@ -62,6 +69,7 @@ class AlbumFragment : Fragment() {
             Observer<Boolean> { isNetworkError ->
                 if (isNetworkError) onNetworkError()
             })
+
     }
 
     override fun onDestroyView() {

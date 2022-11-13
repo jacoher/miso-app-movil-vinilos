@@ -1,6 +1,6 @@
 package com.example.vynils.model
 
-// interprete
+// artista
 data class Performer (
     val id: String, // BAND_101, MUSICIAN_100,..
     val performerId: Int,

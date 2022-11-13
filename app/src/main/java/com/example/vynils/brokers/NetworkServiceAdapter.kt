@@ -134,6 +134,62 @@ class NetworkServiceAdapter constructor(context: Context) {
     }
 
 
+    suspend fun getMusicians() = suspendCoroutine<List<Performer>>{ cont->
+        requestQueue.add(getRequest("musicians",
+            Response.Listener<String> { response ->
+                val resp = JSONArray(response)
+                val list = mutableListOf<Performer>()
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(
+                        i,
+                        Performer(
+                            id = PerformerType.MUSICIAN.toString() + "_" + item.getInt("id"),
+                            performerId = item.getInt("id"),
+                            name = item.getString("name"),
+                            image = item.getString("image"),
+                            description = item.getString("description"),
+                            date = item.getString("birthDate"),
+                            performerType = PerformerType.MUSICIAN,
+                            albums = listOf<Album>()
+                        )
+                    )
+                }
+                cont.resume(list)
+            },
+            Response.ErrorListener {
+                cont.resumeWithException(it)
+            }))
+    }
+
+    suspend fun getBands() = suspendCoroutine<List<Performer>>{ cont->
+        requestQueue.add(getRequest("bands",
+            Response.Listener<String> { response ->
+                val resp = JSONArray(response)
+                val list = mutableListOf<Performer>()
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(
+                        i,
+                        Performer(
+                            id = PerformerType.BAND.toString() +"_" + item.getInt("id"),
+                            performerId = item.getInt("id"),
+                            name = item.getString("name"),
+                            image = item.getString("image"),
+                            description = item.getString("description"),
+                            date = item.getString("creationDate"),
+                            performerType = PerformerType.BAND,
+                            albums = listOf<Album>()
+                        )
+                    )
+                }
+                cont.resume(list)
+            },
+            Response.ErrorListener {
+                cont.resumeWithException(it)
+            }))
+    }
+
 
     private fun getRequest(
         path: String,

@@ -12,4 +12,7 @@
     <string name="activity_create_album_fecha">Fecha de lanzamiento</string>
     <string name="activity_create_album_create">Crear</string>
     <string name="activity_create_album_cancel">Cancelar</string>
+
+    <string name="button_performer_detail_description">Performer detail</string>
+
 </resources>
