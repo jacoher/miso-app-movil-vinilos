@@ -7,8 +7,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.vinilos.R
-import com.example.vinilos.models.Performer
+import com.example.vynils.model.Performer
 import com.example.vynils.R
 import com.example.vynils.view.performer.PerformerAdapter
 import com.example.vynils.viewmodel.PerformerViewModel
@@ -80,7 +79,9 @@ class PerformerDetail : AppCompatActivity() {
         val performerId =  bundle?.getInt("performerId")
 
         if (performerType != null) {
-            viewModel.setPerformerDetailId(performerId, performerType)
+            if (performerId != null) {
+                viewModel.setPerformerDetailId(performerId, performerType)
+            }
         }
 
     }
