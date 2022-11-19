@@ -5,6 +5,7 @@ import androidx.collection.ArrayMap
 import com.example.vynils.model.Album
 import androidx.collection.arrayMapOf
 import com.example.vynils.model.Performer
+import com.example.vynils.model.PerformerType
 
 class CacheManager (context: Context) {
     companion object{
@@ -42,6 +43,20 @@ class CacheManager (context: Context) {
 
     fun getPerformers(): List<Performer>{
         return if (performers.containsKey("performers")) performers["performers"]!! else listOf<Performer>()
+    }
+
+    fun getPerformer(performerType: PerformerType, performerId: Int): Performer{
+        if(performers.containsKey("performers")){
+            val performers: List<Performer> = performers["performers"]!!
+            for(i in 0 until performers.size){
+                if(performers[i].performerId == performerId && performers[i].performerType == performerType){
+                    return performers[i]
+                }
+            }
+        }
+        return Performer(
+            id = "", performerId = 0 , name = "", image = "", description = "", date = "", performerType = PerformerType.MUSICIAN, albums = listOf<Album>()
+        )
     }
 
 }
