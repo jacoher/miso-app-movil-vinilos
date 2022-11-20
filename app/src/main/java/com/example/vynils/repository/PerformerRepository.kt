@@ -19,4 +19,19 @@ class PerformerRepository (private val application: Application){
         }
     }
 
+    suspend fun refreshPerformerDetail(performerType: PerformerType, performerId: Int): Performer {
+        try {
+            var performer : Performer
+            if(performerType == PerformerType.BAND){
+                performer = NetworkServiceAdapter.getInstance(application).getBandsDetail(performerId)
+            }
+            else {
+                performer = NetworkServiceAdapter.getInstance(application).getMusicianDetail(performerId)
+            }
+
+            return performer
+        }catch (e: Exception) {
+            return CacheManager.getInstance(application.applicationContext).getPerformer(performerType, performerId)
+        }
+    }
 }
