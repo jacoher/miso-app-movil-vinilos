@@ -60,6 +60,7 @@ class PerformerViewModel (application: Application) :  AndroidViewModel(applicat
             _eventNetworkError.value = true
         }
     }
+
     private fun refreshDataFromNetwork() {
         try {
             viewModelScope.launch (Dispatchers.Default){

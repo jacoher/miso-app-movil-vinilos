@@ -15,7 +15,6 @@
     <!-- Performer detail -->
     <string name="image_performer_description">Collector detail</string>
     <string name="image_album_performer_description">Album image</string>
-
     <string name="button_performer_detail_description">Performer detail</string>
 
 </resources>
