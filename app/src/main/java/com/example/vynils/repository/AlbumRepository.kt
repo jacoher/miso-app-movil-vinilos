@@ -25,4 +25,14 @@ class AlbumRepository (private val application: Application){
         NetworkServiceAdapter.getInstance(application).postAlbum(album)
     }
 
+    suspend fun refreshAlbumDetail(albumId: Int): Album{
+        try{
+            val resp = NetworkServiceAdapter.getInstance(application).getAlbum(albumId)
+            CacheManager.getInstance(application.applicationContext).addAlbum(resp)
+            return resp
+        }catch (e: Exception) {
+            return CacheManager.getInstance(application.applicationContext).getAlbum(albumId)
+        }
+    }
+
 }

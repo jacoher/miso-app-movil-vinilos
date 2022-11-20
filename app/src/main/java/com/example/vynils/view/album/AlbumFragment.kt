@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.vynils.R
 import com.example.vynils.databinding.FragmentAlbumListBinding
 import com.example.vynils.model.Album
-import com.example.vynils.view.album.album_adapter.AlbumAdapter
 import com.example.vynils.view.createAlbum.CreateAlbum
 import com.example.vynils.viewmodel.AlbumViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton

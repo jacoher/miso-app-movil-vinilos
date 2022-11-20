@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vynils.databinding.FragmentPerformerListBinding
 import com.example.vynils.model.Performer
+import com.example.vynils.view.performerDetail.PerformerDetail
 import com.example.vynils.viewmodel.PerformerViewModel
 
 class PerformerFragment : Fragment() {
@@ -41,6 +42,12 @@ class PerformerFragment : Fragment() {
         viewModelAdapter?.setOnItemClickListener(object: PerformerAdapter.OnItemClickListener{
             override fun onItemClick(position: Int) {
                 var performer  = viewModel.performers.value?.get(position)
+                //Toast.makeText(this@ArtistasFragment.context,"click en ${performer?.id} de tipo ${performer?.performerType}", Toast.LENGTH_SHORT).show()
+                var intent = Intent(this@PerformerFragment.context,PerformerDetail::class.java)
+                intent.putExtra("performerId",performer?.performerId)
+                intent.putExtra("performerType",performer?.performerType.toString())
+                startActivity(intent)
+
             }
         })
 

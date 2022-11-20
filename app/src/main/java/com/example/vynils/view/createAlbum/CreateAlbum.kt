@@ -13,7 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.vynils.model.Performer
 import com.example.vynils.model.Track
-import com.example.vynils.view.album.album_adapter.AlbumAdapter
+import com.example.vynils.view.album.AlbumAdapter
 
 class CreateAlbum : AppCompatActivity() {
 
