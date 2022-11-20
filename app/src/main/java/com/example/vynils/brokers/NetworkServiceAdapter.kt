@@ -269,6 +269,62 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
+    suspend fun getAlbum(idAlbum: Int) = suspendCoroutine<Album> { cont ->
+        requestQueue.add(getRequest(
+            "albums/$idAlbum",
+            Response.Listener<String> { response ->
+                val resp = JSONObject(response)
+
+                val performers = resp.getJSONArray("performers")
+                val performerList = mutableListOf<Performer>()
+                for (j in 0 until resp.getJSONArray("performers").length()) {
+                    performerList.add(
+                        j,
+                        Performer(
+                            id = PerformerType.MUSICIAN.toString() + "_" + performers.getJSONObject(j)
+                                .getInt("id"),
+                            performerId = performers.getJSONObject(j).getInt("id"),
+                            name = performers.getJSONObject(j).getString("name"),
+                            image = "", date = "", description = "",
+                            performerType = PerformerType.MUSICIAN,
+                            albums = mutableListOf<Album>()
+                        )
+                    )
+                }
+
+                val tracks = resp.getJSONArray("tracks")
+                val tracksList = mutableListOf<Track>()
+                for (j in 0 until resp.getJSONArray("tracks").length()) {
+                    tracksList.add(
+                        j,
+                        Track(
+                            id = tracks.getJSONObject(j).getInt("id"),
+                            name = tracks.getJSONObject(j).getString("name"),
+                            duration = tracks.getJSONObject(j).getString("duration")
+                        )
+                    )
+                }
+
+                val album = Album(
+                    id = resp.getInt("id"),
+                    name = resp.getString("name"),
+                    cover = resp.getString("cover"),
+                    recordLabel = resp.getString("recordLabel"),
+                    releaseDate = resp.getString("releaseDate"),
+                    genre = resp.getString("genre"),
+                    description = resp.getString("description"),
+                    performers = performerList,
+                    tracks = tracksList
+                )
+
+                cont.resume(album)
+            },
+            Response.ErrorListener {
+                cont.resumeWithException(it)
+            }))
+
+    }
+
 
     private fun getRequest(
         path: String,

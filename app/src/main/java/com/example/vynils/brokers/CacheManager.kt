@@ -59,4 +59,16 @@ class CacheManager (context: Context) {
         )
     }
 
+    fun getAlbum(albumId: Int): Album {
+        if(albums.containsKey("albumes")){
+            val albumes: List<Album> = albums["albumes"]!!
+            for(i in 0 until albumes.size){
+                if(albumes[i].id == albumId){
+                    return albumes[i]
+                }
+            }
+        }
+        return Album(id = 0, name = "", cover = "", releaseDate = "", description = "", genre = "",recordLabel = "", tracks = emptyList(), performers = emptyList())
+    }
+
 }
