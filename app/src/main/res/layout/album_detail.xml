@@ -14,7 +14,7 @@
         android:layout_margin="16dp"
         android:contentDescription="Crear track"
         android:src="@drawable/ic_plus"
-        android:background="@color/aguamarina"/>
+        android:background="@color/orange"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -60,7 +60,7 @@
                             android:layout_marginVertical="10dp"
                             android:layout_marginEnd="20dp"
                             android:text="Nombre del album"
-                            android:textColor="@color/aguamarina"
+                            android:textColor="@color/white"
                             android:textSize="28sp"
                             android:textStyle="bold"/>
 
