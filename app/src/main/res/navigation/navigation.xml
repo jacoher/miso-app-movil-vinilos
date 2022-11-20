@@ -9,12 +9,26 @@
         android:id="@+id/navigation_home"
         android:name="com.example.vynils.view.album.AlbumFragment"
         android:label="@string/title_album"
-        tools:layout="@layout/fragment_album_list" />
+        tools:layout="@layout/fragment_album_list" >
+        <action
+            android:id="@+id/action_albumList_to_albumDetail"
+            app:destination="@id/albumDetailFragment"
+            />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_performers"
         android:name="com.example.vynils.view.performer.PerformerFragment"
         android:label="@string/title_artists"
         tools:layout="@layout/fragment_performer_list" />
+
+    <fragment
+        android:id="@+id/albumDetailFragment"
+        android:name="com.example.vynils.view.album.AlbumDetailFragment"
+        android:label="">
+        <argument
+            android:name="albumId"
+            app:argType="integer" />
+    </fragment>
 
 </navigation>

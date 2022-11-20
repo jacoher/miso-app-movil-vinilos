@@ -20,6 +20,7 @@
         android:orientation="horizontal"
         android:baselineAligned="false">
 
+
         <ImageView
             android:id="@+id/imageCover"
             android:layout_width="80dp"
