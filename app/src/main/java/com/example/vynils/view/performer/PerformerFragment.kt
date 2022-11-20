@@ -47,6 +47,7 @@ class PerformerFragment : Fragment() {
                 intent.putExtra("performerId",performer?.performerId)
                 intent.putExtra("performerType",performer?.performerType.toString())
                 startActivity(intent)
+
             }
         })
 

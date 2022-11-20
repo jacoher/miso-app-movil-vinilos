@@ -15,7 +15,7 @@
             app:destination="@id/albumDetailFragment"
             />
     </fragment>
-
+        
     <fragment
         android:id="@+id/navigation_performers"
         android:name="com.example.vynils.view.performer.PerformerFragment"

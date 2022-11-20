@@ -325,7 +325,6 @@ class NetworkServiceAdapter constructor(context: Context) {
 
     }
 
-
     private fun getRequest(
         path: String,
         responseListener: Response.Listener<String>,

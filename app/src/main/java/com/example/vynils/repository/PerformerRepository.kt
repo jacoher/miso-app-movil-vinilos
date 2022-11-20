@@ -34,4 +34,5 @@ class PerformerRepository (private val application: Application){
             return CacheManager.getInstance(application.applicationContext).getPerformer(performerType, performerId)
         }
     }
+
 }
