@@ -63,7 +63,8 @@
                 android:layout_width="47dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:clickable="false"/>
+                android:clickable="false"
+                android:src="@drawable/ic_arrow_detail"/>
         </LinearLayout>
     </LinearLayout>
 </layout>

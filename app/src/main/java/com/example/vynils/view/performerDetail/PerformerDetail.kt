@@ -1,4 +1,4 @@
-package com.example.vinilos.ui.performerDetail
+package com.example.vynils.view.performerDetail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,8 +7,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.vynils.model.Performer
 import com.example.vynils.R
+import com.example.vynils.model.Performer
 import com.example.vynils.view.performer.PerformerAdapter
 import com.example.vynils.viewmodel.PerformerViewModel
 import com.squareup.picasso.Picasso

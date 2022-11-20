@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Vynils"
         tools:targetApi="31">
         <activity
+            android:name=".view.performerDetail.PerformerDetail"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
