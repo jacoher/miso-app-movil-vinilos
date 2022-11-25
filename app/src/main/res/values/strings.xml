@@ -12,9 +12,12 @@
     <string name="activity_create_album_fecha">Fecha de lanzamiento</string>
     <string name="activity_create_album_create">Crear</string>
     <string name="activity_create_album_cancel">Cancelar</string>
+
     <!-- Performer detail -->
     <string name="image_performer_description">Collector detail</string>
     <string name="image_album_performer_description">Album image</string>
     <string name="button_performer_detail_description">Performer detail</string>
 
+    <!-- Collectors list -->
+    <string name="button_collector_detail_description">Collector detail</string>
 </resources>

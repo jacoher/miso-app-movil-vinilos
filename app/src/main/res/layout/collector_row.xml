@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="collector"
+            type="com.example.vynils.model.Collector"
+            />
+    </data>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="5dp"
+        android:background="@drawable/rectangle"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="179dp"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="15dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:baselineAligned="false">
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="176dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="@{collector.name}"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:baselineAligned="false">
+
+            <ImageButton
+                android:contentDescription="@string/button_collector_detail_description"
+                android:id="@+id/btnDetail"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="47dp"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
+                android:clickable="false"
+                android:src="@drawable/ic_arrow_detail" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

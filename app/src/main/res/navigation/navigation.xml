@@ -15,13 +15,6 @@
             app:destination="@id/albumDetailFragment"
             />
     </fragment>
-        
-    <fragment
-        android:id="@+id/navigation_performers"
-        android:name="com.example.vynils.view.performer.PerformerFragment"
-        android:label="@string/title_artists"
-        tools:layout="@layout/fragment_performer_list" />
-
     <fragment
         android:id="@+id/albumDetailFragment"
         android:name="com.example.vynils.view.album.AlbumDetailFragment"
@@ -29,6 +22,21 @@
         <argument
             android:name="albumId"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_performers"
+        android:name="com.example.vynils.view.performer.PerformerFragment"
+        android:label="@string/title_artists"
+        tools:layout="@layout/fragment_performer_list" />
+    <fragment
+        android:id="@+id/navigation_collectors"
+        android:name="com.example.vynils.view.collector.CollectorFragment"
+        android:label="@string/title_collectors"
+        tools:layout="@layout/fragment_collector_list">
+        <action
+            android:id="@+id/action_collectorList_to_collectorDetail"
+            app:destination="@+id/collectorDetailFragment"
+            />
     </fragment>
 
 </navigation>
