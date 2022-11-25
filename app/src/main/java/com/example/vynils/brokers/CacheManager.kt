@@ -77,4 +77,8 @@ class CacheManager (context: Context) {
         return if (collectors.containsKey("collectors")) collectors["collectors"]!! else listOf<Collector>()
     }
 
+    fun addCollectors( collector: List<Collector>) {
+        collectors["collectors"] = collector
+    }
+
 }

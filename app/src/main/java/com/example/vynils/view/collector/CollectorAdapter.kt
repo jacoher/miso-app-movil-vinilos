@@ -30,6 +30,10 @@ class CollectorAdapter: RecyclerView.Adapter<CollectorAdapter.CollectorViewHolde
     override fun onBindViewHolder(holder: CollectorViewHolder, position: Int) {
         holder.viewDataBinding.also {
             it.collector = collectors[position]
+            holder.viewDataBinding.root.setOnClickListener{
+                val action = CollectorFragmentDirections.actionCollectorListToCollectorDetail(collectors[position].id)
+                holder.viewDataBinding.root.findNavController().navigate(action)
+            }
         }
     }
 
