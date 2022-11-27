@@ -58,7 +58,7 @@ class CollectorDetailViewModel(application: Application, collectorId: Int) : And
     }
 
     class Factory(val app: Application, val collectorId: Int) : ViewModelProvider.Factory {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(CollectorDetailViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
                 return CollectorDetailViewModel(app, collectorId) as T
