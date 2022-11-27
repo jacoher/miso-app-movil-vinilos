@@ -17,7 +17,7 @@ import com.example.vynils.model.Collector
 import com.example.vynils.viewmodel.CollectorDetailViewModel
 import com.squareup.picasso.Picasso
 
-class CollectorDetailFragment: Fragment() {
+class CollectorDetailFragment : Fragment() {
     private var _binding: FragmentCollectorDetailBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: CollectorDetailViewModel
@@ -36,7 +36,7 @@ class CollectorDetailFragment: Fragment() {
         val activity = requireNotNull(this.activity){
             "You can only access the viewModel after onActivityCreated()"
         }
-        val args: CollectorDetailFragment by navArgs()
+        val args: CollectorDetailFragmentArgs by navArgs()
         val collectorName = binding.textViewCollectorName
         val albumCollector = binding.albumCollectorImg
         val layoutAlbumCollector = binding.containerCollectorAlbumList
