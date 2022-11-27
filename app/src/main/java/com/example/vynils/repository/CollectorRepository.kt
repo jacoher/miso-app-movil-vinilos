@@ -11,7 +11,7 @@ class CollectorRepository (private val application: Application){
         var resp = emptyList<Collector>()
         try{
             resp = NetworkServiceAdapter.getInstance(application).getCollectors()
-
+            CacheManager.getInstance(application.applicationContext).addCollectors(resp)
         }catch (e: Exception) {
             resp = CacheManager.getInstance(application.applicationContext).getCollectors()
         }
