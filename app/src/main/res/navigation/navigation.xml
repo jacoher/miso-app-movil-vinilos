@@ -28,6 +28,7 @@
         android:name="com.example.vynils.view.performer.PerformerFragment"
         android:label="@string/title_artists"
         tools:layout="@layout/fragment_performer_list" />
+
     <fragment
         android:id="@+id/navigation_collectors"
         android:name="com.example.vynils.view.collector.CollectorFragment"
@@ -37,6 +38,14 @@
             android:id="@+id/action_collectorList_to_collectorDetail"
             app:destination="@+id/collectorDetailFragment"
             />
+    </fragment>
+    <fragment
+        android:id="@+id/collectorDetailFragment"
+        android:name="com.example.vynils.view.collector.CollectorDetailFragment"
+        android:label="">
+        <argument
+            android:name="collectorId"
+            app:argType="integer" />
     </fragment>
 
 </navigation>
