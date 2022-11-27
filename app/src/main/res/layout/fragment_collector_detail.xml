@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="collector"
+            type="com.example.vynils.model.Collector" />
+    </data>
+
+    <ScrollView
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            tools:context=".ui.coleccionista.ColeccionistaDetailFragment">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:layout_editor_absoluteX="0dp"
+                android:paddingHorizontal="15dp"
+                android:baselineAligned="false">
+
+                <TextView
+                    android:id="@+id/textViewCollectorName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:visibility="invisible"
+                    android:textColor="@color/white"
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_album"
+                    android:textColor="@color/aguamarina"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <HorizontalScrollView
+                    android:id="@+id/scrollAlbumList"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/containerCollectorAlbumList"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:orientation="horizontal"
+                        android:gravity="left">
+
+                        <ImageView
+                            android:contentDescription="@string/image_album_collector_description"
+                            android:id="@+id/albumCollectorImg"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:visibility="invisible" />
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_fav_artists"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <HorizontalScrollView
+                    android:id="@+id/scrollPerformerList"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/containerCollectorPerformerList"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:orientation="horizontal"
+                        android:gravity="left">
+
+                        <ImageView
+                            android:contentDescription="@string/image_performer_collector_description"
+                            android:id="@+id/performerCollectorImg"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:visibility="invisible" />
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

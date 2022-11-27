@@ -20,4 +20,8 @@
 
     <!-- Collectors list -->
     <string name="button_collector_detail_description">Collector detail</string>
+    <!-- Collectors detail -->
+    <string name="image_album_collector_description">Album image</string>
+    <string name="title_fav_artists">Artistas favoritos</string>
+    <string name="image_performer_collector_description">Performer image</string>
 </resources>
