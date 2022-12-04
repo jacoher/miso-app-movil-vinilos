@@ -17,7 +17,7 @@ Vinilos es una aplicación móvil que permite ofrecer a los coleccionistas y per
 **Actualizar dependencias de Gradle**
 
 1. Ir a la ventana de Gradle en la parte izaquieda de android studio.
-2. Dar clic derecho sibre la opción de la ruta Vynils/app
+2. Dar clic derecho sibre la opción de la ruta Vynils/app/debug
 3. Seleccionar la opcion Reload Gradle Project
 4. Seleccionar Run app.
 

@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.collection.ArrayMap
 import com.example.vynils.model.Album
 import androidx.collection.arrayMapOf
+import com.example.vynils.model.Collector
 import com.example.vynils.model.PerformerType
 import com.example.vynils.model.Performer
 
@@ -19,6 +20,7 @@ class CacheManager (context: Context) {
     }
     private var albums: ArrayMap<String, List<Album>> = arrayMapOf<String, List<Album>>()
     private val performers : ArrayMap<String, List<Performer>> = arrayMapOf<String, List<Performer>>()
+    private val collectors : ArrayMap<String, List<Collector>> = arrayMapOf<String, List<Collector>>()
 
     fun getAlbums(): List<Album> {
         return if (albums.containsKey("albumes")) albums["albumes"]!! else listOf<Album>()
@@ -71,5 +73,12 @@ class CacheManager (context: Context) {
         return Album(id = 0, name = "", cover = "", releaseDate = "", description = "", genre = "",recordLabel = "", tracks = emptyList(), performers = emptyList())
     }
 
+    fun getCollectors(): List<Collector> {
+        return if (collectors.containsKey("collectors")) collectors["collectors"]!! else listOf<Collector>()
+    }
+
+    fun addCollectors( collector: List<Collector>) {
+        collectors["collectors"] = collector
+    }
 
 }

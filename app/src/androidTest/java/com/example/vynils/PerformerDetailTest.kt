@@ -29,8 +29,8 @@ class PerformerDetailTest{
 
         Thread.sleep(1000);
         Espresso.onView(withId(R.id.navigation_performers)).perform(ViewActions.click())
-        Thread.sleep(5000);
 
+        Thread.sleep(1000);
         //Valida si la lista de artistas esta renderizada
         Espresso.onView(withId(R.id.performersRv)).perform(
             RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
@@ -38,7 +38,7 @@ class PerformerDetailTest{
                 ViewActions.click()
             )
         )
-
+        Thread.sleep(1000);
         Espresso.onView(withId(R.id.textViewPerformerName))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
         Espresso.onView(withId(R.id.textViewCreationDate))
