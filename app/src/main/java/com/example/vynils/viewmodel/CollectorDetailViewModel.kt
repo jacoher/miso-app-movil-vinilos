@@ -11,6 +11,7 @@ import kotlinx.coroutines.withContext
 import java.lang.Exception
 import java.lang.IllegalArgumentException
 
+
 class CollectorDetailViewModel(application: Application, collectorId: Int) : AndroidViewModel(application) {
     private val collectorRepository = CollectorRepository(application)
 
