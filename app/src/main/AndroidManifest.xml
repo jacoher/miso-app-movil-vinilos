@@ -40,6 +40,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".view.associateTrack.AssociateTrack"
+            android:exported="false" />
     </application>
 
 </manifest>

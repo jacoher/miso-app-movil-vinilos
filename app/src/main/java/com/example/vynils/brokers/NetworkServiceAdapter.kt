@@ -428,6 +428,39 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
+    suspend fun postTrack(track: Track, albumId: Int) {
+        val url = BASE_URL + "albums/" + albumId + "/tracks"
+
+        val trackJSONObject = JSONObject()
+        trackJSONObject.put("name",track.name)
+        trackJSONObject.put("duration",track.duration)
+
+        requestQueue.add(object : JsonObjectRequest(Method.POST, url, trackJSONObject,
+            object : Response.Listener<JSONObject?> {
+                override fun onResponse(response: JSONObject?) {
+                    Log.i("StartActivity", response.toString())
+                }
+            }, object : Response.ErrorListener {
+                override fun onErrorResponse(error: VolleyError) {
+                    Log.i("StartActivity", error.toString())
+                }
+            }) {
+
+            override fun getHeaders(): Map<String, String> {
+                Log.d("parametros post",body.toString())
+                val headers = ArrayMap<String, String>()
+                headers["Content-Type"] = "application/json"
+                return headers
+            }
+
+            override fun getParams(): Map<String, String> {
+                val params: MutableMap<String, String> = ArrayMap()
+                return params
+            }
+        })
+    }
+
+
     private fun getRequest(
         path: String,
         responseListener: Response.Listener<String>,

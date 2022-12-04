@@ -3,21 +3,17 @@ package com.example.vynils.viewmodel
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.*
-import com.example.vynils.model.Collector
-import com.example.vynils.repository.CollectorRepository
+import com.example.vynils.model.Track
+import com.example.vynils.repository.TrackRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import java.lang.Exception
-import java.lang.IllegalArgumentException
 
-class CollectorDetailViewModel(application: Application, collectorId: Int) : AndroidViewModel(application) {
-    private val collectorRepository = CollectorRepository(application)
+class TrackViewModel(application: Application) : AndroidViewModel(application) {
+    private val tracksRepository = TrackRepository(application)
+    private val _track = MutableLiveData<Track>()
 
-    private val _collector = MutableLiveData<Collector>()
-
-    val collector: LiveData<Collector>
-        get() = _collector
+    val track: LiveData<Track>
+        get() = _track
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
@@ -29,24 +25,20 @@ class CollectorDetailViewModel(application: Application, collectorId: Int) : And
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
 
-    val id: Int = collectorId
-
-    init {
-        refreshDataFromNetwork()
+    fun setTrack(track: Track) {
+        _track.value = track
     }
 
-    fun refreshDataFromNetwork(){
+    fun associateTrack(albumId: Int) {
         try {
             viewModelScope.launch (Dispatchers.Default) {
-                withContext(Dispatchers.Default){
-                    var data = collectorRepository.refreshCollectorDetail(id)
-                    _collector.postValue(data)
+                _track.value?.let {
+                    tracksRepository.associateTrack(it, albumId)
                 }
                 _eventNetworkError.postValue(false)
                 _isNetworkErrorShown.postValue(false)
             }
-        }
-        catch (e: Exception) {
+        } catch (e:Exception) {
             Log.d("Error", e.toString())
             _eventNetworkError.value = true
         }
@@ -56,11 +48,11 @@ class CollectorDetailViewModel(application: Application, collectorId: Int) : And
         _isNetworkErrorShown.value = true
     }
 
-    class Factory(val app: Application, val collectorId: Int) : ViewModelProvider.Factory {
+    class Factory(val app: Application) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(CollectorDetailViewModel::class.java)) {
+            if (modelClass.isAssignableFrom(TrackViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return CollectorDetailViewModel(app, collectorId) as T
+                return TrackViewModel(app) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }
